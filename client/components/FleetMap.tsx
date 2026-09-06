@@ -17,8 +17,8 @@ export default function FleetMap({ onHubClick }: { onHubClick?: (hub: Hub) => vo
   };
 
   const mapBackground = theme === "light"
-    ? "https://cdn.builder.io/api/v1/image/assets%2F36d1078c17f94b889fd933421ec3f094%2Fd303d7ff6788498d879bc7bdc1124262?format=webp&width=800&height=1200"
-    : "https://cdn.builder.io/api/v1/image/assets%2F36d1078c17f94b889fd933421ec3f094%2F990fa8dd05ce4bbabcc1ccc9faf75496?format=webp&width=800&height=1200";
+    ? "https://cdn.builder.io/api/v1/image/assets%2F36d1078c17f94b889fd933421ec3f094%2Fd303d7ff6788498d879bc7bdc1124262"
+    : "https://cdn.builder.io/api/v1/image/assets%2F36d1078c17f94b889fd933421ec3f094%2F990fa8dd05ce4bbabcc1ccc9faf75496";
 
   return <section className="ms-map" style={{ backgroundImage: `url(${mapBackground})`, backgroundPosition: "center", backgroundSize: "cover" }}>
     <div className="absolute inset-0 bg-black/[0.03] dark:bg-black/[0.08]" />

@@ -164,8 +164,8 @@
     --ms-surface: #151817;
     --ms-panel: #191d1b;
     --ms-border: rgba(255,255,255,.09);
-    --ms-body: #dce6df;
-    --ms-muted: #7d8981;
+    --ms-body: #eef5ef;
+    --ms-muted: #aab7ae;
     --ms-hover: rgba(255,255,255,.06);
     height: 100dvh;
     min-height: 0;
@@ -185,14 +185,16 @@
     --ms-surface: #ffffff;
     --ms-panel: #ffffff;
     --ms-border: rgba(31, 49, 39, .12);
-    --ms-body: #24332a;
-    --ms-muted: #718077;
+    --ms-body: #1f2d24;
+    --ms-muted: #52645a;
     --ms-hover: rgba(31, 49, 39, .06);
   }
 
   .ms-header { position: relative; z-index: 40; flex-shrink: 0; display: flex; height: 4rem; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ms-border); background: var(--ms-surface); padding: 0 1.25rem; }
   .ms-logo { display: flex; height: 2rem; width: 2rem; align-items: center; justify-content: center; border-radius: .55rem; border: 1px solid color-mix(in srgb, var(--ms-accent) 40%, transparent); background: var(--ms-accent-soft); color: var(--ms-accent); }
-  .ms-icon-button { position: relative; border-radius: .4rem; padding: .5rem; transition: background .2s, color .2s; }
+  .ms-icon-button { position: relative; border-radius: .4rem; padding: .5rem; color: var(--ms-body); transition: background .2s, color .2s; }
+  .ms-shell [class*="text-[9px]"] { font-size: .6875rem; line-height: 1rem; }
+  .ms-shell [class*="text-[10px]"] { font-size: .75rem; line-height: 1.1rem; }
   .ms-icon-button:hover { background: var(--ms-hover); color: var(--ms-body); }
   .ms-shell > .flex { height: calc(100dvh - 4rem); min-height: 0; }
   .ms-shell main { min-height: 0; overflow: auto; }

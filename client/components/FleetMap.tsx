@@ -16,8 +16,12 @@ export default function FleetMap({ onHubClick }: { onHubClick?: (hub: Hub) => vo
     onHubClick?.(hub);
   };
 
-  return <section className="ms-map">
-    <div className="absolute inset-0 map-grid opacity-80" /><div className="absolute inset-0 map-roads opacity-60" />
+  const mapBackground = theme === "light"
+    ? "https://cdn.builder.io/api/v1/image/assets%2F36d1078c17f94b889fd933421ec3f094%2Fd303d7ff6788498d879bc7bdc1124262?format=webp&width=800&height=1200"
+    : "https://cdn.builder.io/api/v1/image/assets%2F36d1078c17f94b889fd933421ec3f094%2F990fa8dd05ce4bbabcc1ccc9faf75496?format=webp&width=800&height=1200";
+
+  return <section className="ms-map" style={{ backgroundImage: `url(${mapBackground})`, backgroundPosition: "center", backgroundSize: "cover" }}>
+    <div className="absolute inset-0 bg-black/[0.03] dark:bg-black/[0.08]" />
     <div className="relative z-10 flex items-center justify-between border-b border-[var(--ms-border)] bg-[var(--ms-surface)]/80 px-4 py-3 backdrop-blur-sm sm:px-6"><div><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--ms-muted)]">Live network map</p><p className="mt-1 text-sm font-semibold">Electronics City · Bengaluru</p></div><div className="hidden items-center gap-2 text-[11px] text-[var(--ms-muted)] sm:flex"><span className="h-1.5 w-1.5 rounded-full bg-[var(--ms-accent-strong)] shadow-[0_0_10px_var(--ms-accent-strong)]" /> Live hub data · just now</div></div>
     <div className="relative z-10 flex items-center gap-2 px-4 pt-4 sm:px-6"><span className="rounded-md border border-[var(--ms-accent-strong)]/35 bg-[var(--ms-accent-soft)] px-2.5 py-1.5 text-[11px] font-medium text-[var(--ms-accent)]">Hubs</span><span className="text-[11px] text-[var(--ms-muted)]">Select a hub to inspect its fleet activity</span></div>
     {hubs.map((hub) => <button key={hub.id} onClick={() => selectHub(hub)} className={`group absolute z-10 flex -translate-x-1/2 -translate-y-1/2 flex-col items-center ${selectedHubId === hub.id ? "scale-110" : ""}`} style={{ left: `${hub.x}%`, top: `calc(${hub.y}% + 64px)` }}><span className="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#1a1d1c]" style={{ backgroundColor: hubColors[hub.state], boxShadow: `0 0 18px ${hubColors[hub.state]}80` }}><MapPin className="h-4 w-4 fill-current text-[#18201b]" /><span className="absolute inset-[-5px] rounded-full border border-current opacity-20 group-hover:animate-ping" style={{ color: hubColors[hub.state] }} />{selectedHubId === hub.id && <span className="absolute inset-[-8px] rounded-full border-2 border-current" style={{ color: hubColors[hub.state] }} />}</span><span className={`mt-1.5 whitespace-nowrap rounded px-2 py-1 text-[10px] shadow-lg ${theme === "dark" ? "bg-[#131615]/90 text-[#dae2dc]" : "bg-white/90 text-[#24332a]"}`}>{hub.name}<span className="ml-1.5 opacity-60">{hub.available} available</span></span></button>)}

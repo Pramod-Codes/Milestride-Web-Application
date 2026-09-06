@@ -1,5 +1,5 @@
 /** @import must precede all other statements */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap");
 
 @import "tailwindcss";
 
@@ -13,51 +13,34 @@
    * A different format will require also updating the theme in tailwind.config.ts.
   */
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 216 11% 7%;
+    --foreground: 140 14% 93%;
+    --card: 150 9% 10%;
+    --card-foreground: 140 14% 93%;
+    --popover: 150 9% 10%;
+    --popover-foreground: 140 14% 93%;
+    --primary: 147 68% 58%;
+    --primary-foreground: 150 25% 7%;
+    --secondary: 150 8% 14%;
+    --secondary-foreground: 140 14% 93%;
+    --muted: 150 8% 14%;
+    --muted-foreground: 140 8% 55%;
+    --accent: 150 8% 17%;
+    --accent-foreground: 140 14% 93%;
+    --destructive: 4 78% 64%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 150 8% 20%;
+    --input: 150 8% 16%;
+    --ring: 147 68% 58%;
+    --radius: 0.65rem;
+    --sidebar-background: 150 9% 9%;
+    --sidebar-foreground: 140 11% 74%;
+    --sidebar-primary: 147 68% 58%;
+    --sidebar-primary-foreground: 150 25% 7%;
+    --sidebar-accent: 150 8% 15%;
+    --sidebar-accent-foreground: 140 14% 93%;
+    --sidebar-border: 150 8% 18%;
+    --sidebar-ring: 147 68% 58%;
   }
 
   .dark {
@@ -106,6 +89,27 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: "DM Sans", sans-serif;
+    font-feature-settings: "cv11" 1, "ss01" 1;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Space Grotesk", sans-serif;
+  }
+
+  button, input {
+    font: inherit;
+  }
+
+  .map-grid {
+    background-color: #1a1d1c;
+    background-image: linear-gradient(rgba(189, 205, 194, 0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(189, 205, 194, 0.045) 1px, transparent 1px), radial-gradient(circle at 64% 26%, rgba(79, 218, 139, 0.08), transparent 24%), radial-gradient(circle at 24% 72%, rgba(63, 112, 144, 0.1), transparent 28%);
+    background-size: 48px 48px, 48px 48px, auto, auto;
+  }
+
+  .map-roads {
+    background-image: linear-gradient(28deg, transparent 43%, rgba(200, 210, 203, 0.11) 43.2%, transparent 43.8%), linear-gradient(117deg, transparent 48%, rgba(200, 210, 203, 0.08) 48.2%, transparent 48.8%), linear-gradient(164deg, transparent 59%, rgba(200, 210, 203, 0.08) 59.3%, transparent 60%), linear-gradient(75deg, transparent 22%, rgba(200, 210, 203, 0.06) 22.3%, transparent 22.8%);
+    background-size: 380px 300px, 460px 360px, 520px 420px, 310px 280px;
   }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {

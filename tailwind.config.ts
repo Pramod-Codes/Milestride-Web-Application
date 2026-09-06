@@ -13,6 +13,14 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["DM Sans", "sans-serif"],
+        display: ["Space Grotesk", "sans-serif"],
+      },
+      boxShadow: {
+        panel: "0 18px 50px rgba(0, 0, 0, 0.28)",
+        glow: "0 0 24px rgba(75, 220, 139, 0.14)",
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

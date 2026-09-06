@@ -112,6 +112,58 @@
     background-size: 380px 300px, 460px 360px, 520px 420px, 310px 280px;
   }
 
+  .ms-shell {
+    --ms-bg: #101214;
+    --ms-surface: #151817;
+    --ms-panel: #191d1b;
+    --ms-border: rgba(255,255,255,.09);
+    --ms-body: #dce6df;
+    --ms-muted: #7d8981;
+    --ms-hover: rgba(255,255,255,.06);
+    min-height: 100vh;
+    background: var(--ms-bg);
+    color: var(--ms-body);
+  }
+
+  .ms-light {
+    --ms-bg: #f1f5f2;
+    --ms-surface: #ffffff;
+    --ms-panel: #ffffff;
+    --ms-border: rgba(31, 49, 39, .12);
+    --ms-body: #24332a;
+    --ms-muted: #718077;
+    --ms-hover: rgba(31, 49, 39, .06);
+  }
+
+  .ms-header { position: relative; z-index: 40; display: flex; height: 4rem; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ms-border); background: var(--ms-surface); padding: 0 1.25rem; }
+  .ms-logo { display: flex; height: 2rem; width: 2rem; align-items: center; justify-content: center; border-radius: .55rem; border: 1px solid rgba(62,219,133,.35); background: rgba(62,219,133,.1); color: #58e397; }
+  .ms-icon-button { position: relative; border-radius: .4rem; padding: .5rem; transition: background .2s, color .2s; }
+  .ms-icon-button:hover { background: var(--ms-hover); color: var(--ms-body); }
+  .ms-sidebar { width: 220px; flex-shrink: 0; border-right: 1px solid var(--ms-border); background: var(--ms-surface); padding: 1rem; }
+  .ms-nav-item { display: flex; width: 100%; align-items: center; gap: .75rem; border-radius: .4rem; padding: .65rem .75rem; color: var(--ms-muted); font-size: .75rem; font-weight: 500; transition: background .2s, color .2s; }
+  .ms-nav-item:hover, .ms-nav-item.active { background: rgba(62,219,133,.1); color: #55dc93; }
+  .ms-popover { position: absolute; z-index: 50; width: 11rem; border: 1px solid var(--ms-border); border-radius: .55rem; background: var(--ms-panel); padding: .375rem; box-shadow: 0 18px 50px rgba(0,0,0,.28); }
+  .ms-map { position: relative; min-height: calc(100vh - 4rem); overflow: hidden; background: #1a1d1c; }
+  .ms-light .ms-map { background: #dfe8e1; }
+  .ms-light .map-grid { opacity: .75; filter: saturate(.55) brightness(1.8); }
+  .ms-light .map-roads { opacity: .9; filter: invert(1) saturate(.25); }
+  @media (max-width: 1023px) { .ms-sidebar { display: none; } }
+  @media (max-width: 640px) { .ms-header { padding: 0 .75rem; } }
+  .ms-control, .ms-primary-button { display: inline-flex; height: 2.25rem; align-items: center; justify-content: center; gap: .45rem; border-radius: .4rem; padding: 0 .75rem; font-size: .7rem; font-weight: 600; transition: background .2s, border-color .2s; }
+  .ms-control { border: 1px solid var(--ms-border); color: var(--ms-body); background: var(--ms-panel); }
+  .ms-control:hover { background: var(--ms-hover); }
+  .ms-primary-button { background: #4bdc8b; color: #122018; }
+  .ms-primary-button:hover { background: #68e79e; }
+  .ms-row { border-bottom: 1px solid var(--ms-border); color: var(--ms-body); }
+  .ms-row td { padding: .8rem .75rem; color: var(--ms-muted); }
+  .ms-row td:first-child { color: var(--ms-body); }
+  .ms-status { display: inline-flex; align-items: center; border-radius: 999px; padding: .22rem .48rem; font-size: .58rem; font-weight: 600; white-space: nowrap; }
+  .status-green { background: rgba(75,220,139,.12); color: #4bdc8b; }
+  .status-amber { background: rgba(230,181,66,.14); color: #e6b542; }
+  .status-red { background: rgba(239,101,90,.14); color: #ef655a; }
+  .status-blue { background: rgba(105,167,222,.14); color: #69a7de; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
+
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
     overflow-wrap: anywhere;
     word-break: break-word;

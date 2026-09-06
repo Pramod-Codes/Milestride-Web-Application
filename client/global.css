@@ -136,6 +136,23 @@
     background: var(--ms-scrollbar-thumb-hover, #52645a);
   }
 
+  html[data-milestride-theme="light"] {
+    scrollbar-color: #b5c4ba #edf2ee;
+  }
+
+  html[data-milestride-theme="light"]::-webkit-scrollbar-track {
+    background: #edf2ee;
+  }
+
+  html[data-milestride-theme="light"]::-webkit-scrollbar-thumb {
+    border-color: #edf2ee;
+    background: #b5c4ba;
+  }
+
+  html[data-milestride-theme="light"]::-webkit-scrollbar-thumb:hover {
+    background: #8fa496;
+  }
+
   .ms-shell {
     --ms-scrollbar-track: #101214;
     --ms-scrollbar-thumb: #3b4941;

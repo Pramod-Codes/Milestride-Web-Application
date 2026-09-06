@@ -12,7 +12,10 @@ export default function MilestrideShell({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem("milestride-theme") as Theme) || "dark");
   const [profileOpen, setProfileOpen] = useState(false);
   const toggleTheme = () => setTheme((current) => (current === "dark" ? "light" : "dark"));
-  useEffect(() => localStorage.setItem("milestride-theme", theme), [theme]);
+  useEffect(() => {
+    localStorage.setItem("milestride-theme", theme);
+    document.documentElement.dataset.milestrideTheme = theme;
+  }, [theme]);
   const value = useMemo(() => ({ theme, toggleTheme }), [theme]);
 
   return <ThemeContext.Provider value={value}><div className={`ms-shell ${theme === "light" ? "ms-light" : ""}`}>

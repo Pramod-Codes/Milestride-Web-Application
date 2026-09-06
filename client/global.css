@@ -112,7 +112,34 @@
     background-size: 380px 300px, 460px 360px, 520px 420px, 310px 280px;
   }
 
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--ms-scrollbar-thumb, #3b4941) var(--ms-scrollbar-track, #101214);
+  }
+
+  *::-webkit-scrollbar {
+    width: 9px;
+    height: 9px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: var(--ms-scrollbar-track, #101214);
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border: 2px solid var(--ms-scrollbar-track, #101214);
+    border-radius: 999px;
+    background: var(--ms-scrollbar-thumb, #3b4941);
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: var(--ms-scrollbar-thumb-hover, #52645a);
+  }
+
   .ms-shell {
+    --ms-scrollbar-track: #101214;
+    --ms-scrollbar-thumb: #3b4941;
+    --ms-scrollbar-thumb-hover: #52645a;
     --ms-bg: #101214;
     --ms-surface: #151817;
     --ms-panel: #191d1b;
@@ -126,6 +153,9 @@
   }
 
   .ms-light {
+    --ms-scrollbar-track: #edf2ee;
+    --ms-scrollbar-thumb: #b5c4ba;
+    --ms-scrollbar-thumb-hover: #8fa496;
     --ms-bg: #f1f5f2;
     --ms-surface: #ffffff;
     --ms-panel: #ffffff;

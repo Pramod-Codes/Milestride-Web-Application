@@ -5,7 +5,7 @@ import { useMilestrideTheme } from "@/components/MilestrideShell";
 
 const hubColors = { healthy: "#45dd89", warning: "#e8b846", critical: "#ef655a" };
 
-export default function FleetMap({ onHubClick, docked = false }: { onHubClick?: (hub: Hub) => void; docked?: boolean }) {
+export default function FleetMap({ onHubClick }: { onHubClick?: (hub: Hub) => void }) {
   const { theme } = useMilestrideTheme();
   const [trackedVehicleId, setTrackedVehicleId] = useState<string | null>(null);
   const [trackMenuOpen, setTrackMenuOpen] = useState(false);
@@ -17,7 +17,7 @@ export default function FleetMap({ onHubClick, docked = false }: { onHubClick?: 
     return () => window.clearInterval(timer);
   }, []);
 
-  return <section className={`ms-map ${docked ? "rounded-xl border border-[var(--ms-border)]" : ""}`}>
+  return <section className="ms-map">
     <div className="absolute inset-0 map-grid opacity-80" /><div className="absolute inset-0 map-roads opacity-60" />
     <div className="relative z-10 flex items-center justify-between border-b border-[var(--ms-border)] bg-[var(--ms-surface)]/80 px-4 py-3 backdrop-blur-sm sm:px-6"><div><p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--ms-muted)]">Live network map</p><p className="mt-1 text-sm font-semibold">Electronics City · Bengaluru</p></div><div className="hidden items-center gap-2 text-[11px] text-[var(--ms-muted)] sm:flex"><span className="h-1.5 w-1.5 rounded-full bg-[var(--ms-accent-strong)] shadow-[0_0_10px_var(--ms-accent-strong)]" /> Live hub data · just now</div></div>
     <div className="relative z-10 flex items-center gap-2 px-4 pt-4 sm:px-6"><span className="rounded-md border border-[var(--ms-accent-strong)]/35 bg-[var(--ms-accent-soft)] px-2.5 py-1.5 text-[11px] font-medium text-[var(--ms-accent)]">Hubs</span><span className="text-[11px] text-[var(--ms-muted)]">Select a vehicle below to track its live position</span></div>

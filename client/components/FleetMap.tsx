@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { AlertTriangle, BatteryCharging, Bell, Link as RouterLink, MapPin, Navigation, SlidersHorizontal, X } from "lucide-react";
+import { AlertTriangle, BatteryCharging, Bell, MapPin, Navigation, SlidersHorizontal, X } from "lucide-react";
+import { Link as RouterLink } from "react-router-dom";
 import { hubs, vehicles, type Hub, type Vehicle } from "@/lib/milestride";
 import { useMilestrideTheme } from "@/components/MilestrideShell";
 

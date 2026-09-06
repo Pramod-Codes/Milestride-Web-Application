@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Bell, CircleHelp, ChevronDown, LogOut, Moon, Settings, Sun, Zap } from "lucide-react";
+import { Bell, CircleHelp, ChevronDown, LogOut, Moon, Settings, Sun, Bike } from "lucide-react";
 import { navItems } from "@/lib/milestride";
 
 type Theme = "dark" | "light";
@@ -20,7 +20,7 @@ export default function MilestrideShell({ children }: { children: ReactNode }) {
 
   return <ThemeContext.Provider value={value}><div className={`ms-shell ${theme === "light" ? "ms-light" : ""}`}>
     <header className="ms-header">
-      <div className="flex items-center gap-3"><Link to="/overview" className="flex items-center gap-3"><span className="ms-logo"><Zap className="h-4 w-4 fill-current" /></span><span className="text-sm font-semibold tracking-[-0.02em]">Milestride</span></Link><span className="hidden h-4 w-px bg-[var(--ms-border)] sm:block" /><span className="hidden text-xs text-[var(--ms-muted)] sm:block">Operations workspace</span></div>
+      <div className="flex items-center gap-3"><Link to="/overview" className="flex items-center gap-3"><span className="ms-logo"><Bike className="h-4 w-4" /></span><span className="text-sm font-semibold tracking-[-0.02em]">Milestride</span></Link><span className="hidden h-4 w-px bg-[var(--ms-border)] sm:block" /><span className="hidden text-xs text-[var(--ms-muted)] sm:block">Operations workspace</span></div>
       <div className="flex items-center gap-1.5 text-[var(--ms-muted)]"><button className="ms-icon-button hidden sm:block" aria-label="Help"><CircleHelp className="h-4 w-4" /></button><button className="ms-icon-button" onClick={toggleTheme} aria-label="Toggle theme">{theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}</button><button className="ms-icon-button" aria-label="Settings"><Settings className="h-4 w-4" /></button><button className="ms-icon-button relative" aria-label="Notifications"><Bell className="h-4 w-4" /><span className="absolute right-1.5 top-1.5 h-1.5 w-1.5 rounded-full bg-[#ef655a]" /></button><button onClick={() => setProfileOpen(!profileOpen)} className="ml-1 flex items-center gap-2 rounded-md p-1 transition hover:bg-[var(--ms-hover)]"><span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#b9c9c0] text-[10px] font-semibold text-[#28312b]">AM</span><ChevronDown className="hidden h-3.5 w-3.5 sm:block" /></button></div>
       {profileOpen && <div className="ms-popover right-5 top-14"><p className="px-2.5 py-2 text-xs text-[var(--ms-muted)]">Alex Morgan</p><Link to="/" className="flex items-center gap-2 rounded-md px-2.5 py-2 text-xs hover:bg-[var(--ms-hover)]"><LogOut className="h-3.5 w-3.5" /> Sign out</Link></div>}
     </header>

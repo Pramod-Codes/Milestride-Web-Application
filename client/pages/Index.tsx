@@ -8,7 +8,7 @@ import {
   Mail,
   MapPin,
   ShieldCheck,
-  Zap,
+  Bike,
 } from "lucide-react";
 
 export default function Index() {
@@ -39,7 +39,7 @@ export default function Index() {
 
           <div className="relative z-10 flex items-center gap-3 px-12 py-8">
             <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#3edb85]/40 bg-[#3edb85]/10 text-[#5ce69a]">
-              <Zap className="h-4 w-4 fill-current" />
+              <Bike className="h-4 w-4" />
             </div>
             <span className="text-[15px] font-semibold tracking-[-0.02em]">Milestride</span>
           </div>
@@ -94,7 +94,7 @@ export default function Index() {
         <section className="flex min-h-screen flex-1 items-center justify-center bg-[#101214] px-5 py-10 sm:px-10 lg:px-16 xl:px-24">
           <div className="w-full max-w-[410px]">
             <div className="mb-12 flex items-center gap-3 lg:hidden">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#3edb85]/40 bg-[#3edb85]/10 text-[#5ce69a]"><Zap className="h-4 w-4 fill-current" /></div>
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#3edb85]/40 bg-[#3edb85]/10 text-[#5ce69a]"><Bike className="h-4 w-4" /></div>
               <span className="text-[15px] font-semibold">Milestride</span>
             </div>
             <div className="mb-9">

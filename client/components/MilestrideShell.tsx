@@ -1,11 +1,23 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { Bell, CircleHelp, ChevronDown, LogOut, Menu, Moon, PanelLeftClose, PanelLeftOpen, Settings, Sun, X, Bike } from "lucide-react";
+import { BarChart3, BatteryCharging, Bell, BellRing, Bike, Building2, ChevronDown, CircleHelp, Fence, LayoutDashboard, LogOut, Menu, Moon, PanelLeftClose, PanelLeftOpen, Settings, Sun, Wrench, X } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { navItems } from "@/lib/milestride";
 
 type Theme = "dark" | "light";
 const ThemeContext = createContext<{ theme: Theme; toggleTheme: () => void }>({ theme: "dark", toggleTheme: () => undefined });
 export const useMilestrideTheme = () => useContext(ThemeContext);
+
+const navIcons: Record<string, LucideIcon> = {
+  "/overview": LayoutDashboard,
+  "/fleet": Bike,
+  "/hubs": Building2,
+  "/alerts": BellRing,
+  "/geofencing": Fence,
+  "/charging": BatteryCharging,
+  "/maintenance": Wrench,
+  "/reports": BarChart3,
+};
 
 export default function MilestrideShell({ children }: { children: ReactNode }) {
   const location = useLocation();
@@ -30,7 +42,7 @@ export default function MilestrideShell({ children }: { children: ReactNode }) {
       {mobileNavOpen && <button className="ms-nav-backdrop lg:hidden" onClick={() => setMobileNavOpen(false)} aria-label="Close navigation" />}
       <aside className={`ms-sidebar ${sidebarCollapsed ? "collapsed" : ""} ${mobileNavOpen ? "mobile-open" : ""}`}>
         <div className="mb-4 flex items-center justify-between px-2"><p className={`text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ms-muted)] ${sidebarCollapsed ? "sr-only" : ""}`}>Workspace</p><button className="ms-icon-button" onClick={() => mobileNavOpen ? setMobileNavOpen(false) : setSidebarCollapsed((collapsed) => !collapsed)} aria-label={mobileNavOpen ? "Close navigation" : sidebarCollapsed ? "Expand navigation" : "Collapse navigation"}>{mobileNavOpen ? <X className="h-4 w-4" /> : sidebarCollapsed ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}</button></div>
-        <nav className="space-y-1">{navItems.map((item) => <NavLink key={item.path} to={item.path} onClick={() => setMobileNavOpen(false)} title={sidebarCollapsed ? item.label : undefined} className={({ isActive }) => `ms-nav-item ${isActive || (item.path === "/overview" && location.pathname === "/") ? "active" : ""}`}><span className="h-1.5 w-1.5 flex-shrink-0 rounded-full bg-current opacity-70" /><span className={sidebarCollapsed ? "sr-only" : ""}>{item.label}</span>{item.badge && <span className={`${sidebarCollapsed ? "sr-only" : ""} ml-auto rounded bg-[#ef655a]/15 px-1.5 py-0.5 text-[9px] text-[#e87b73]`}>{item.badge}</span>}</NavLink>)}</nav>
+        <nav className="space-y-1">{navItems.map((item) => { const Icon = navIcons[item.path]; return <NavLink key={item.path} to={item.path} onClick={() => setMobileNavOpen(false)} title={sidebarCollapsed ? item.label : undefined} className={({ isActive }) => `ms-nav-item ${isActive || (item.path === "/overview" && location.pathname === "/") ? "active" : ""}`}><Icon className="h-4 w-4 flex-shrink-0" /><span className={sidebarCollapsed ? "sr-only" : ""}>{item.label}</span>{item.badge && <span className={`${sidebarCollapsed ? "sr-only" : ""} ml-auto rounded bg-[#ef655a]/15 px-1.5 py-0.5 text-[9px] text-[#e87b73]`}>{item.badge}</span>}</NavLink>; })}</nav>
         <div className={`mt-8 border-t border-[var(--ms-border)] pt-5 ${sidebarCollapsed ? "hidden" : ""}`}><p className="px-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ms-muted)]">Network status</p><div className="mt-4 flex items-center gap-2 px-2 text-xs text-[var(--ms-body)]"><span className="h-2 w-2 flex-shrink-0 rounded-full bg-[var(--ms-accent-strong)] shadow-[0_0_10px_var(--ms-accent-strong)]" /> All systems nominal</div></div>
       </aside>
       <main className="min-w-0 flex-1">{children}</main>

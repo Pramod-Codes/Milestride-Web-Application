@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AlertTriangle, BatteryCharging, Bell, Bike, Scooter, SlidersHorizontal, X } from "lucide-react";
 import { hubs, vehicles, type Hub, type Vehicle } from "@/lib/milestride";
 import { useMilestrideTheme } from "@/components/MilestrideShell";
@@ -6,13 +6,14 @@ import { useMilestrideTheme } from "@/components/MilestrideShell";
 const hubColors = { healthy: "#45dd89", warning: "#e8b846", critical: "#ef655a" };
 export const bookedMovingVehicles: Vehicle[] = Array.from({ length: 15 }, (_, index) => ({ id: index % 3 === 0 ? `Scooter V${Math.floor(index / 3) + 1}` : `E-Bike B${index + 1}`, type: index % 3 === 0 ? "Scooter" : "E-bike", hub: hubs[index % hubs.length].name, battery: 52 + (index % 6) * 7, status: "Moving", trips: 18 + index * 7, distance: `${42 + index * 3}.4 km`, lastActivity: "Now", x: 12 + ((index * 19) % 76), y: 18 + ((index * 23) % 64) }));
 
-export default function FleetMap({ onHubClick, trackedBookedIds = new Set() }: { onHubClick?: (hub: Hub) => void; trackedBookedIds?: Set<string> }) {
+export default function FleetMap({ onHubClick, trackedBookedIds = new Set(), hubDetailsOpen = false }: { onHubClick?: (hub: Hub) => void; trackedBookedIds?: Set<string>; hubDetailsOpen?: boolean }) {
   const { theme } = useMilestrideTheme();
   const [selectedHubId, setSelectedHubId] = useState<string | null>(null);
   const [activityOpen, setActivityOpen] = useState(true);
   const [trackedVehicleId, setTrackedVehicleId] = useState<string | null>(null);
   const [activePanel, setActivePanel] = useState<"filters" | "alerts" | "geofencing" | "charging" | null>(null);
   const [mapFilter, setMapFilter] = useState<"all" | "attention" | "charging">("all");
+  useEffect(() => { if (!hubDetailsOpen) setSelectedHubId(null); }, [hubDetailsOpen]);
   const selectedHub = hubs.find((hub) => hub.id === selectedHubId) ?? null;
   const visibleHubs = mapFilter === "attention" ? hubs.filter((hub) => hub.state !== "healthy") : mapFilter === "charging" ? hubs.filter((hub) => vehicles.some((vehicle) => vehicle.hub === hub.name && ["Charging", "Low battery"].includes(vehicle.status))) : hubs;
   const selectedVehicles = selectedHub ? vehicles.filter((vehicle) => vehicle.hub === selectedHub.name) : [];

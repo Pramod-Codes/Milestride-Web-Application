@@ -8,7 +8,7 @@ export default function Overview() {
   const [selectedHub, setSelectedHub] = useState<Hub | null>(null);
   const [trackedBookedIds, setTrackedBookedIds] = useState<Set<string>>(new Set());
   const toggleBookedVehicle = (vehicleId: string) => setTrackedBookedIds((current) => { const next = new Set(current); next.has(vehicleId) ? next.delete(vehicleId) : next.add(vehicleId); return next; });
-  return <MilestrideShell><div className="relative h-full w-full overflow-hidden p-0"><FleetMap onHubClick={setSelectedHub} trackedBookedIds={trackedBookedIds} />{selectedHub && <HubDrawer hub={selectedHub} trackedIds={trackedBookedIds} onToggle={toggleBookedVehicle} onClose={() => setSelectedHub(null)} />}</div></MilestrideShell>;
+  return <MilestrideShell><div className="relative h-full w-full overflow-hidden p-0"><FleetMap onHubClick={setSelectedHub} trackedBookedIds={trackedBookedIds} hubDetailsOpen={Boolean(selectedHub)} />{selectedHub && <HubDrawer hub={selectedHub} trackedIds={trackedBookedIds} onToggle={toggleBookedVehicle} onClose={() => setSelectedHub(null)} />}</div></MilestrideShell>;
 }
 
 function HubDrawer({ hub, trackedIds, onToggle, onClose }: { hub: Hub; trackedIds: Set<string>; onToggle: (vehicleId: string) => void; onClose: () => void }) {

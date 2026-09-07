@@ -22,7 +22,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/overview" element={<Overview />} />
-          {(["fleet", "hubs", "alerts", "geofencing", "charging", "maintenance", "reports"] as WorkspaceKey[]).map((kind) => (
+          {(["fleet", "vehicles", "hubs", "alerts", "geofencing", "charging", "maintenance", "reports"] as WorkspaceKey[]).map((kind) => (
             <Route key={kind} path={`/${kind}`} element={<Workspace kind={kind} />} />
           ))}
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

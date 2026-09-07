@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { BarChart3, BatteryCharging, Bell, BellRing, Bike, Building2, ChevronDown, CircleHelp, Fence, LayoutDashboard, LogOut, Menu, Moon, PanelLeftClose, PanelLeftOpen, Settings, Sun, Wrench, X } from "lucide-react";
+import { BarChart3, BatteryCharging, Bell, BellRing, Bike, Building2, ChevronDown, CircleHelp, Fence, LayoutDashboard, LogOut, Menu, Moon, Navigation, PanelLeftClose, PanelLeftOpen, Settings, Sun, Wrench, X } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { navItems } from "@/lib/milestride";
 
@@ -11,6 +11,7 @@ export const useMilestrideTheme = () => useContext(ThemeContext);
 const navIcons: Record<string, LucideIcon> = {
   "/overview": LayoutDashboard,
   "/fleet": Bike,
+  "/vehicles": Navigation,
   "/hubs": Building2,
   "/alerts": BellRing,
   "/geofencing": Fence,

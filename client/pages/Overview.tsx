@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { BatteryCharging, Bell, Bike, CircleDot, MapPin, X } from "lucide-react";
+import { BatteryCharging, Bell, Bike, MapPin, Scooter, X } from "lucide-react";
 import { Link } from "react-router-dom";
 import MilestrideShell from "@/components/MilestrideShell";
 import FleetMap from "@/components/FleetMap";
@@ -26,7 +26,7 @@ function HubDrawer({ hub, onClose }: { hub: Hub; onClose: () => void }) {
 }
 
 function VehicleRow({ vehicle }: { vehicle: (typeof vehicles)[number] }) {
-  const Icon = vehicle.type === "E-bike" ? Bike : CircleDot;
+  const Icon = vehicle.type === "E-bike" ? Bike : Scooter;
   const batteryTone = vehicle.battery < 25 ? "text-[#ef655a]" : vehicle.battery < 50 ? "text-[#e6b542]" : "text-[var(--ms-accent-strong)]";
   return <div className="flex items-center gap-3 rounded-lg border border-[var(--ms-border)] p-3"><span className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${vehicle.type === "E-bike" ? "bg-[#b486e8]/15 text-[#b486e8]" : "bg-[#60a4e7]/15 text-[#60a4e7]"}`}><Icon className="h-4 w-4" /></span><div className="min-w-0 flex-1"><p className="text-sm font-medium">{vehicle.id}</p><p className="mt-1 text-xs text-[var(--ms-muted)]">{vehicle.type} · {vehicle.status} · {vehicle.lastActivity}</p></div><span className={`text-sm font-semibold ${batteryTone}`}>{vehicle.battery}%</span></div>;
 }

@@ -4,9 +4,9 @@ import { hubs, vehicles, type Hub, type Vehicle } from "@/lib/milestride";
 import { useMilestrideTheme } from "@/components/MilestrideShell";
 
 const hubColors = { healthy: "#45dd89", warning: "#e8b846", critical: "#ef655a" };
-export const bookedMovingVehicles: Vehicle[] = Array.from({ length: 15 }, (_, index) => ({ id: `Booked ${String(index + 1).padStart(2, "0")}`, type: index % 3 === 0 ? "Scooter" : "E-bike", hub: hubs[index % hubs.length].name, battery: 52 + (index % 6) * 7, status: "Moving", trips: 18 + index * 7, distance: `${42 + index * 3}.4 km`, lastActivity: "Now", x: 12 + ((index * 19) % 76), y: 18 + ((index * 23) % 64) }));
+export const bookedMovingVehicles: Vehicle[] = Array.from({ length: 15 }, (_, index) => ({ id: index % 3 === 0 ? `Scooter V${Math.floor(index / 3) + 1}` : `E-Bike B${index + 1}`, type: index % 3 === 0 ? "Scooter" : "E-bike", hub: hubs[index % hubs.length].name, battery: 52 + (index % 6) * 7, status: "Moving", trips: 18 + index * 7, distance: `${42 + index * 3}.4 km`, lastActivity: "Now", x: 12 + ((index * 19) % 76), y: 18 + ((index * 23) % 64) }));
 
-export default function FleetMap({ onHubClick, trackedBookedIds = new Set(), onToggleBookedVehicle, onToggleAllBookedVehicles }: { onHubClick?: (hub: Hub) => void; trackedBookedIds?: Set<string>; onToggleBookedVehicle?: (vehicleId: string) => void; onToggleAllBookedVehicles?: () => void }) {
+export default function FleetMap({ onHubClick, trackedBookedIds = new Set() }: { onHubClick?: (hub: Hub) => void; trackedBookedIds?: Set<string> }) {
   const { theme } = useMilestrideTheme();
   const [selectedHubId, setSelectedHubId] = useState<string | null>(null);
   const [activityOpen, setActivityOpen] = useState(true);

@@ -241,7 +241,18 @@
   .ms-login-light .ms-login-input { border-color: rgba(31,49,39,.16); background: #ffffff; color: #1f2d24; }
   .ms-login-light .ms-login-input::placeholder { color: #7a8b80; }
   .ms-login-light .ms-login-auth form + p { color: #52645a !important; }
-  .ms-login-light .ms-login-auth form + p a { color: #1d8f62; }
+  .ms-login-light .ms-login-auth form + p a { color: #1d8f62 !important; }
+  .ms-login-light .ms-login-auth > div > div:nth-child(2) > p:first-child { color: #247a58 !important; }
+  .ms-login-light .ms-login-auth > div > div:nth-child(2) > p:last-child { color: #52645a !important; }
+  .ms-login-light .ms-login-auth form label > span,
+  .ms-login-light .ms-login-auth form label div > span { color: #344c3d !important; }
+  .ms-login-light .ms-login-auth form label button { color: #1d8f62 !important; }
+  .ms-login-light .ms-login-auth form > div { color: #52645a !important; }
+  .ms-login-light .ms-login-auth form > div > div { color: #52645a !important; }
+  .ms-login-light .ms-login-input { border-color: rgba(31,49,39,.18) !important; background: #ffffff !important; color: #1f2d24 !important; }
+  .ms-login-light .ms-login-input:focus { border-color: #247a58 !important; box-shadow: 0 0 0 2px rgba(36,122,88,.15); }
+  .ms-login-light .ms-login-auth form + p + p { color: #64766a !important; }
+  .ms-login-light .ms-login-auth form + p + p button { color: #52645a !important; }
   @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
 
   :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {

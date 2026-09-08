@@ -4,7 +4,12 @@ import path from "node:path";
 import { createServer } from "./server";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode }) => {
+  const repositoryName = process.env.GITHUB_REPOSITORY?.split("/")[1];
+  const base = process.env.GITHUB_ACTIONS === "true" && repositoryName ? `/${repositoryName}/` : "/";
+
+  return {
+  base,
   server: {
     host: "::",
     port: 8080,
@@ -23,7 +28,8 @@ export default defineConfig(({ mode }) => ({
       "@shared": path.resolve(__dirname, "./shared"),
     },
   },
-}));
+  };
+});
 
 function expressPlugin(): Plugin {
   return {

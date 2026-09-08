@@ -32,7 +32,7 @@ export default function Index() {
   return (
     <main className="h-[100dvh] overflow-hidden bg-[#101214] text-white selection:bg-[#3edb85]/30">
       <div className="flex h-full min-h-0 flex-col lg:flex-row">
-        <section className="relative hidden h-full min-h-0 overflow-y-auto overflow-x-hidden border-r border-white/[0.07] bg-[#151817] lg:flex lg:w-[53%] lg:flex-col">
+        <section className="relative hidden h-full min-h-0 overflow-hidden border-r border-white/[0.07] bg-[#151817] lg:flex lg:w-[53%] lg:flex-col">
           <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] [background-size:62px_62px]" />
           <div className="absolute -left-32 top-24 h-[430px] w-[430px] rounded-full bg-[#3edb85]/10 blur-[110px]" />
           <div className="absolute bottom-[-130px] right-[-40px] h-[470px] w-[470px] rounded-full bg-[#3e83db]/10 blur-[120px]" />
@@ -44,23 +44,23 @@ export default function Index() {
             <span className="text-[15px] font-semibold tracking-[-0.02em]">Milestride</span>
           </div>
 
-          <div className="relative z-10 flex min-h-[calc(100dvh-8rem)] flex-1 flex-col justify-center px-12 pb-12 pt-4 xl:px-20">
-            <div className="mb-12 max-w-xl">
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#3edb85]/20 bg-[#3edb85]/[0.08] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#63e99e]">
+          <div className="relative z-10 flex min-h-0 flex-1 flex-col justify-center px-8 pb-6 pt-2 xl:px-16">
+            <div className="mb-6 max-w-xl">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#3edb85]/20 bg-[#3edb85]/[0.08] px-3 py-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[#63e99e]">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#4fe28d] shadow-[0_0_12px_#4fe28d]" />
                 Network operations
               </div>
               <h1 className="max-w-lg text-4xl font-semibold leading-[1.08] tracking-[-0.045em] text-white xl:text-[50px]">
                 Keep every mile <span className="text-[#54dc92]">moving.</span>
               </h1>
-              <p className="mt-6 max-w-md text-[15px] leading-7 text-[#98a29d]">
+              <p className="mt-4 max-w-md text-[15px] leading-6 text-[#98a29d]">
                 One calm command center for your fleet, hubs, and the decisions that keep your network running.
               </p>
             </div>
 
             <div className="relative max-w-[600px] overflow-hidden rounded-2xl border border-white/[0.09] bg-[#1a1e1c]/90 shadow-2xl shadow-black/30 backdrop-blur-sm">
               <div className="absolute inset-0 opacity-35 [background-image:linear-gradient(115deg,transparent_0%,transparent_47%,rgba(132,145,139,.12)_48%,transparent_49%),linear-gradient(25deg,transparent_0%,transparent_48%,rgba(132,145,139,.12)_49%,transparent_50%),linear-gradient(rgba(255,255,255,.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.025)_1px,transparent_1px)] [background-size:auto,auto,38px_38px,38px_38px]" />
-              <div className="relative p-5 sm:p-6">
+              <div className="relative p-4 sm:p-5">
                 <div className="mb-5 flex items-center justify-between">
                   <div>
                     <p className="text-[11px] font-medium uppercase tracking-[0.16em] text-[#71807a]">Live network</p>
@@ -68,7 +68,7 @@ export default function Index() {
                   </div>
                   <div className="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-black/20 px-2.5 py-1.5 text-[11px] text-[#9aa79f]"><span className="h-1.5 w-1.5 rounded-full bg-[#4ee18d]" /> All systems nominal</div>
                 </div>
-                <div className="relative h-[220px] overflow-hidden rounded-xl border border-white/[0.07] bg-[#171b19]">
+                <div className="relative h-[170px] overflow-hidden rounded-xl border border-white/[0.07] bg-[#171b19]">
                   <div className="absolute left-[17%] top-[26%] h-px w-[75%] rotate-[28deg] bg-white/[0.09]" />
                   <div className="absolute left-[-5%] top-[58%] h-px w-[90%] rotate-[-12deg] bg-white/[0.09]" />
                   <div className="absolute left-[46%] top-[-20%] h-[150%] w-px rotate-[17deg] bg-white/[0.08]" />
@@ -80,7 +80,7 @@ export default function Index() {
                   <div className="absolute right-[12%] top-[15%] rounded-md border border-white/[0.08] bg-[#111513]/90 px-2 py-1 text-[9px] text-[#ced7d1]">University Campus <span className="ml-1 text-[#e7bd58]">10</span></div>
                   <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-white/[0.08] bg-[#111513]/90 px-2.5 py-1.5 text-[10px] text-[#b7c2bb]"><span className="h-1.5 w-1.5 rounded-full bg-[#49dc89]" /> 4 active hubs</div>
                 </div>
-                <div className="mt-5 grid grid-cols-3 gap-3">
+                <div className="mt-4 grid grid-cols-3 gap-3">
                   <div><p className="text-xl font-semibold tracking-[-0.04em] text-[#eff8f1]">30</p><p className="mt-1 text-[10px] text-[#75827b]">Available vehicles</p></div>
                   <div><p className="text-xl font-semibold tracking-[-0.04em] text-[#eff8f1]">97<span className="text-sm text-[#8d9992]">%</span></p><p className="mt-1 text-[10px] text-[#75827b]">Zone compliance</p></div>
                   <div><p className="text-xl font-semibold tracking-[-0.04em] text-[#eff8f1]">4.8<span className="text-sm text-[#8d9992]">k</span></p><p className="mt-1 text-[10px] text-[#75827b]">Trips this week</p></div>
@@ -88,7 +88,7 @@ export default function Index() {
               </div>
             </div>
           </div>
-          <div className="relative z-10 flex items-center justify-between px-12 pb-8 text-[11px] text-[#67726c] xl:px-20"><span>© 2026 Milestride Operations</span><span>Built for teams in motion</span></div>
+          <div className="relative z-10 flex items-center justify-between px-8 pb-4 text-[11px] text-[#67726c] xl:px-20"><span>© 2026 Milestride Operations</span><span>Built for teams in motion</span></div>
         </section>
 
         <section className="flex h-full min-h-0 flex-1 items-center justify-center overflow-hidden bg-[#101214] px-5 py-3 sm:px-10 sm:py-6 lg:px-16 lg:py-10 xl:px-24">

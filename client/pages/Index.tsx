@@ -88,7 +88,7 @@ export default function Index() {
               </div>
             </div>
           </div>
-          <div className="relative z-10 flex items-center justify-between px-8 pb-4 text-[11px] text-[#67726c] xl:px-20"><span>© 2026 Milestride Operations</span><span>Built for teams in motion</span></div>
+          <div className="relative z-10 flex items-center justify-between px-8 pb-4 text-[11px] text-[#67726c] xl:px-20"><span>© 2026 Milestride</span><span>Built for teams in motion</span></div>
         </section>
 
         <section className="flex h-full min-h-0 flex-1 items-start justify-center overflow-hidden bg-[#101214] px-5 py-6 sm:px-10 sm:py-8 lg:px-16 lg:py-10 xl:px-24">

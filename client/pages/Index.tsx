@@ -9,8 +9,6 @@ import {
   MapPin,
   ShieldCheck,
   Bike,
-  ZoomIn,
-  ZoomOut,
 } from "lucide-react";
 
 export default function Index() {
@@ -20,14 +18,6 @@ export default function Index() {
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(true);
   const [error, setError] = useState("");
-  const [zoomLevel, setZoomLevel] = useState(1);
-
-  const mapMarkers = [
-    { left: zoomLevel === 1 ? "19%" : zoomLevel === 2 ? "28%" : "38%", top: zoomLevel === 1 ? "45%" : zoomLevel === 2 ? "39%" : "32%", color: "#48dd88" },
-    { left: zoomLevel === 1 ? "61%" : zoomLevel === 2 ? "56%" : "68%", top: zoomLevel === 1 ? "27%" : zoomLevel === 2 ? "34%" : "24%", color: "#edb546" },
-    ...(zoomLevel > 1 ? [{ left: zoomLevel === 2 ? "77%" : "23%", top: zoomLevel === 2 ? "70%" : "68%", color: "#6f9de2" }] : []),
-    ...(zoomLevel === 1 || zoomLevel === 2 ? [{ left: zoomLevel === 1 ? "76%" : "84%", top: zoomLevel === 1 ? "66%" : "52%", color: "#ef655a" }] : []),
-  ];
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -83,18 +73,9 @@ export default function Index() {
                   <div className="absolute left-[-5%] top-[58%] h-px w-[90%] rotate-[-12deg] bg-white/[0.09]" />
                   <div className="absolute left-[46%] top-[-20%] h-[150%] w-px rotate-[17deg] bg-white/[0.08]" />
                   <div className="absolute left-[62%] top-[15%] h-[95%] w-px rotate-[68deg] bg-white/[0.07]" />
-                  {mapMarkers.map((marker, index) => (
-                    <MapPin
-                      key={`${zoomLevel}-${index}`}
-                      className="absolute h-7 w-7 transition-all duration-300"
-                      style={{ left: marker.left, top: marker.top, fill: marker.color, color: marker.color, filter: `drop-shadow(0 0 8px ${marker.color})` }}
-                    />
-                  ))}
-                  <div className="absolute right-3 top-3 z-10 flex flex-col overflow-hidden rounded-lg border border-white/[0.12] bg-[#111513]/90 shadow-lg">
-                    <button type="button" onClick={() => setZoomLevel((level) => Math.min(3, level + 1))} disabled={zoomLevel === 3} aria-label="Zoom in map" className="flex h-7 w-7 items-center justify-center text-[#dce5df] transition hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-35"><ZoomIn className="h-3.5 w-3.5" /></button>
-                    <div className="h-px bg-white/[0.1]" />
-                    <button type="button" onClick={() => setZoomLevel((level) => Math.max(1, level - 1))} disabled={zoomLevel === 1} aria-label="Zoom out map" className="flex h-7 w-7 items-center justify-center text-[#dce5df] transition hover:bg-white/[0.08] disabled:cursor-not-allowed disabled:opacity-35"><ZoomOut className="h-3.5 w-3.5" /></button>
-                  </div>
+                  <MapPin className="absolute left-[19%] top-[45%] h-7 w-7 fill-[#48dd88] text-[#48dd88] drop-shadow-[0_0_8px_#48dd88]" />
+                  <MapPin className="absolute left-[61%] top-[27%] h-7 w-7 fill-[#edb546] text-[#edb546] drop-shadow-[0_0_8px_#edb546]" />
+                  <MapPin className="absolute left-[76%] top-[66%] h-7 w-7 fill-[#ef655a] text-[#ef655a] drop-shadow-[0_0_8px_#ef655a]" />
                   <div className="absolute left-[15%] top-[62%] rounded-md border border-white/[0.08] bg-[#111513]/90 px-2 py-1 text-[9px] text-[#ced7d1]">Global Tech Park <span className="ml-1 text-[#55e397]">12</span></div>
                   <div className="absolute right-[12%] top-[15%] rounded-md border border-white/[0.08] bg-[#111513]/90 px-2 py-1 text-[9px] text-[#ced7d1]">University Campus <span className="ml-1 text-[#e7bd58]">10</span></div>
                   <div className="absolute bottom-3 left-3 flex items-center gap-2 rounded-md border border-white/[0.08] bg-[#111513]/90 px-2.5 py-1.5 text-[10px] text-[#b7c2bb]"><span className="h-1.5 w-1.5 rounded-full bg-[#49dc89]" /> 4 active hubs</div>

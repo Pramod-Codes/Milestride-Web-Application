@@ -9,8 +9,6 @@ import {
   MapPin,
   ShieldCheck,
   Bike,
-  Moon,
-  Sun,
 } from "lucide-react";
 
 export default function Index() {
@@ -106,9 +104,6 @@ export default function Index() {
         </section>
 
         <section className={`ms-login-auth relative flex h-full min-h-0 flex-1 items-start justify-center overflow-hidden px-5 py-6 sm:px-10 sm:py-8 lg:px-16 lg:py-10 xl:px-24 ${isLight ? "bg-[#f8fbf9]" : "bg-[#101214]"}`}>
-          <button type="button" onClick={() => setTheme((current) => current === "dark" ? "light" : "dark")} aria-label={isLight ? "Switch to dark theme" : "Switch to light theme"} className={`absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-lg border transition sm:right-8 sm:top-8 lg:right-12 ${isLight ? "border-[#1f4935]/15 bg-white text-[#247a58] hover:bg-[#edf5ef]" : "border-white/[0.1] bg-white/[0.03] text-[#aab7ae] hover:bg-white/[0.08]"}`}>
-            {isLight ? <Moon className="h-4 w-4" /> : <Sun className="h-4 w-4" />}
-          </button>
           <div className="w-full max-w-[410px]">
             <div className="mb-6 flex items-center gap-3 sm:mb-8 lg:hidden">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#3edb85]/40 bg-[#3edb85]/10 text-[#5ce69a]"><Bike className="h-4 w-4" /></div>

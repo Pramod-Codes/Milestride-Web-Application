@@ -30,9 +30,9 @@ export default function Index() {
   };
 
   return (
-    <main className="min-h-screen bg-[#101214] text-white selection:bg-[#3edb85]/30">
-      <div className="flex min-h-screen flex-col lg:flex-row">
-        <section className="relative hidden min-h-screen overflow-hidden border-r border-white/[0.07] bg-[#151817] lg:flex lg:w-[53%] lg:flex-col">
+    <main className="h-[100dvh] overflow-hidden bg-[#101214] text-white selection:bg-[#3edb85]/30">
+      <div className="flex h-full min-h-0 flex-col lg:flex-row">
+        <section className="relative hidden h-full min-h-0 overflow-hidden border-r border-white/[0.07] bg-[#151817] lg:flex lg:w-[53%] lg:flex-col">
           <div className="absolute inset-0 opacity-70 [background-image:linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] [background-size:62px_62px]" />
           <div className="absolute -left-32 top-24 h-[430px] w-[430px] rounded-full bg-[#3edb85]/10 blur-[110px]" />
           <div className="absolute bottom-[-130px] right-[-40px] h-[470px] w-[470px] rounded-full bg-[#3e83db]/10 blur-[120px]" />
@@ -91,7 +91,7 @@ export default function Index() {
           <div className="relative z-10 flex items-center justify-between px-12 pb-8 text-[11px] text-[#67726c] xl:px-20"><span>© 2024 Milestride Operations</span><span>Built for teams in motion</span></div>
         </section>
 
-        <section className="flex min-h-screen flex-1 items-center justify-center bg-[#101214] px-5 py-10 sm:px-10 lg:px-16 xl:px-24">
+        <section className="flex h-full min-h-0 flex-1 items-center justify-center overflow-y-auto bg-[#101214] px-5 py-6 sm:px-10 sm:py-8 lg:overflow-hidden lg:px-16 lg:py-10 xl:px-24">
           <div className="w-full max-w-[410px]">
             <div className="mb-12 flex items-center gap-3 lg:hidden">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#3edb85]/40 bg-[#3edb85]/10 text-[#5ce69a]"><Bike className="h-4 w-4" /></div>

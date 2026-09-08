@@ -91,29 +91,29 @@ export default function Index() {
           <div className="relative z-10 flex items-center justify-between px-12 pb-8 text-[11px] text-[#67726c] xl:px-20"><span>© 2026 Milestride Operations</span><span>Built for teams in motion</span></div>
         </section>
 
-        <section className="flex h-full min-h-0 flex-1 items-center justify-center overflow-y-auto bg-[#101214] px-5 py-6 sm:px-10 sm:py-8 lg:overflow-hidden lg:px-16 lg:py-10 xl:px-24">
+        <section className="flex h-full min-h-0 flex-1 items-center justify-center overflow-hidden bg-[#101214] px-5 py-3 sm:px-10 sm:py-6 lg:px-16 lg:py-10 xl:px-24">
           <div className="w-full max-w-[410px]">
-            <div className="mb-12 flex items-center gap-3 lg:hidden">
+            <div className="mb-6 flex items-center gap-3 sm:mb-8 lg:hidden">
               <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#3edb85]/40 bg-[#3edb85]/10 text-[#5ce69a]"><Bike className="h-4 w-4" /></div>
               <span className="text-[15px] font-semibold">Milestride</span>
             </div>
-            <div className="mb-9">
+            <div className="mb-6 sm:mb-8 lg:mb-9">
               <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#58dd96]">Welcome back</p>
               <h2 className="text-3xl font-semibold tracking-[-0.04em] text-[#f3f7f4] sm:text-[34px]">Sign in to your workspace</h2>
               <p className="mt-3 text-sm leading-6 text-[#88948d]">Monitor your network and keep your fleet moving.</p>
             </div>
 
-            <form className="space-y-5" onSubmit={handleSubmit}>
+            <form className="space-y-4 sm:space-y-5" onSubmit={handleSubmit}>
               <label className="block"><span className="mb-2 block text-xs font-medium text-[#c1cbc4]">Work email</span><div className="relative"><Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#65736b]" /><input value={email} onChange={(event) => setEmail(event.target.value)} type="email" placeholder="you@company.com" className="h-12 w-full rounded-lg border border-white/[0.1] bg-[#191d1c] pl-10 pr-4 text-sm text-[#f0f5f1] outline-none transition placeholder:text-[#5f6a64] focus:border-[#43d989] focus:ring-2 focus:ring-[#43d989]/15" /></div></label>
               <label className="block"><div className="mb-2 flex items-center justify-between"><span className="text-xs font-medium text-[#c1cbc4]">Password</span><button type="button" className="text-[11px] font-medium text-[#55dc93] transition hover:text-[#8aefb6]">Forgot password?</button></div><div className="relative"><LockKeyhole className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[#65736b]" /><input value={password} onChange={(event) => setPassword(event.target.value)} type={showPassword ? "text" : "password"} placeholder="Enter your password" className="h-12 w-full rounded-lg border border-white/[0.1] bg-[#191d1c] pl-10 pr-11 text-sm text-[#f0f5f1] outline-none transition placeholder:text-[#5f6a64] focus:border-[#43d989] focus:ring-2 focus:ring-[#43d989]/15" /><button type="button" onClick={() => setShowPassword((visible) => !visible)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#65736b] transition hover:text-[#c7d3cb]" aria-label={showPassword ? "Hide password" : "Show password"}>{showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}</button></div></label>
               <div className="flex items-center justify-between pt-1"><label className="flex cursor-pointer items-center gap-2.5 text-xs text-[#8d9992]"><input checked={remember} onChange={(event) => setRemember(event.target.checked)} type="checkbox" className="h-3.5 w-3.5 rounded border-white/20 bg-[#191d1c] accent-[#43d989]" /> Remember me</label><div className="flex items-center gap-1.5 text-[11px] text-[#6f7c74]"><ShieldCheck className="h-3.5 w-3.5 text-[#55dc93]" /> Secure workspace</div></div>
               {error && <p className="rounded-md border border-[#ef655a]/20 bg-[#ef655a]/10 px-3 py-2 text-xs text-[#ff9c93]">{error}</p>}
               <button type="submit" className="group flex h-12 w-full items-center justify-center gap-2 rounded-lg bg-[#4bdc8b] text-sm font-semibold text-[#0d1912] shadow-[0_10px_30px_rgba(66,220,139,.13)] transition hover:bg-[#64e59c] focus:outline-none focus:ring-2 focus:ring-[#65e69d]/60 focus:ring-offset-2 focus:ring-offset-[#101214]">Sign in to Milestride <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" /></button>
             </form>
-            <div className="my-8 flex items-center gap-3"><div className="h-px flex-1 bg-white/[0.08]" /><span className="text-[10px] uppercase tracking-[0.16em] text-[#5f6a64]">or</span><div className="h-px flex-1 bg-white/[0.08]" /></div>
+            <div className="my-5 flex items-center gap-3 sm:my-7 lg:my-8"><div className="h-px flex-1 bg-white/[0.08]" /><span className="text-[10px] uppercase tracking-[0.16em] text-[#5f6a64]">or</span><div className="h-px flex-1 bg-white/[0.08]" /></div>
             <button type="button" onClick={() => navigate("/overview")} className="flex h-11 w-full items-center justify-center gap-2 rounded-lg border border-white/[0.12] bg-white/[0.02] text-sm font-medium text-[#d2dbd4] transition hover:border-white/20 hover:bg-white/[0.05]">Continue with SSO <ArrowRight className="h-4 w-4 text-[#6b7971]" /></button>
-            <p className="mt-8 text-center text-xs text-[#718078]">New to Milestride? <Link to="/overview" className="font-medium text-[#55dc93] hover:text-[#8aefb6]">Request access</Link></p>
-            <p className="mt-16 text-center text-[10px] leading-5 text-[#56625b]">By signing in, you agree to the Milestride <button className="underline decoration-[#56625b] underline-offset-2 hover:text-[#9aa79f]">Terms of Service</button> and <button className="underline decoration-[#56625b] underline-offset-2 hover:text-[#9aa79f]">Privacy Policy</button>.</p>
+            <p className="mt-5 text-center text-xs sm:mt-7 lg:mt-8 text-[#718078]">New to Milestride? <Link to="/overview" className="font-medium text-[#55dc93] hover:text-[#8aefb6]">Request access</Link></p>
+            <p className="mt-8 text-center text-[10px] sm:mt-10 lg:mt-16 leading-5 text-[#56625b]">By signing in, you agree to the Milestride <button className="underline decoration-[#56625b] underline-offset-2 hover:text-[#9aa79f]">Terms of Service</button> and <button className="underline decoration-[#56625b] underline-offset-2 hover:text-[#9aa79f]">Privacy Policy</button>.</p>
           </div>
         </section>
       </div>

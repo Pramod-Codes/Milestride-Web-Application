@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { Check, ChevronDown, Download, FileText, Gauge, ShieldCheck, Wrench } from "lucide-react";
-import { fleetOptions, allHubs, allVehicles, type Vehicle } from "@/lib/milestride";
+import { fleetOptions, allHubs, allVehicles } from "@/lib/milestride";
 import { useMilestrideFleet } from "@/components/MilestrideShell";
 
 const reportTypes = ["Fleet performance", "Hub performance", "Charging and battery", "Maintenance costs"];
@@ -13,13 +13,16 @@ type ReportTableProps = {
   rows: ReactNode[][];
 };
 
-export default function ReportsDashboard() {
+export default function ReportsDashboard({ query = "" }: { query?: string }) {
   const { fleetId } = useMilestrideFleet();
   const [reportType, setReportType] = useState(reportTypes[0]);
   const [range, setRange] = useState(ranges[1]);
   const fleet = fleetOptions.find((item) => item.id === fleetId) ?? fleetOptions[0];
   const hubs = allHubs.filter((hub) => fleet.hubNames.includes(hub.name));
   const vehicles = allVehicles.filter((vehicle) => fleet.hubNames.includes(vehicle.hub));
+  const normalizedQuery = query.trim().toLowerCase();
+  const filteredVehicles = vehicles.filter((vehicle) => !normalizedQuery || `${vehicle.id} ${vehicle.hub} ${vehicle.type}`.toLowerCase().includes(normalizedQuery));
+  const filteredHubs = hubs.filter((hub) => !normalizedQuery || `${hub.id} ${hub.name}`.toLowerCase().includes(normalizedQuery));
   const metrics = useMemo(() => ({
     utilization: fleetId === "bellandur" ? "74%" : "68%",
     rides: fleetId === "bellandur" ? "2,146" : "1,284",
@@ -28,12 +31,12 @@ export default function ReportsDashboard() {
   }), [fleetId]);
 
   return <div className="space-y-5">
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4"><ReportMetric icon={<Gauge className="h-4 w-4" />} label="Fleet utilization" value={metrics.utilization} tone="text-[var(--ms-accent-strong)]" /><ReportMetric icon={<FileText className="h-4 w-4" />} label="Completed rides" value={metrics.rides} tone="text-[#69a7de]" /><ReportMetric icon={<ShieldCheck className="h-4 w-4" />} label="Zone compliance" value={metrics.compliance} tone="text-[#e6b542]" /><ReportMetric icon={<Wrench className="h-4 w-4" />} label="Maintenance cost" value={metrics.maintenance} tone="text-[#b486e8]" /></div>
     <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-[var(--ms-border)] bg-[var(--ms-panel)] p-4">
       <div className="flex items-center gap-3"><span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--ms-accent-soft)] text-[var(--ms-accent)]"><FileText className="h-4 w-4" /></span><div><p className="text-sm font-semibold">{reportType}</p><p className="mt-1 text-[11px] text-[var(--ms-muted)]">{fleet.name} fleet · {range} · Generated just now</p></div></div>
       <div className="flex flex-wrap items-center gap-2"><ReportTypeDropdown label="Report" value={reportType} onChange={setReportType} options={reportTypes} /><ReportTypeDropdown label="Range" value={range} onChange={setRange} options={ranges} /><button className="ms-primary-button"><Download className="h-3.5 w-3.5" /> Export report</button></div>
     </div>
-    <div className="grid grid-cols-2 gap-3 lg:grid-cols-4"><ReportMetric icon={<Gauge className="h-4 w-4" />} label="Fleet utilization" value={metrics.utilization} tone="text-[var(--ms-accent-strong)]" /><ReportMetric icon={<FileText className="h-4 w-4" />} label="Completed rides" value={metrics.rides} tone="text-[#69a7de]" /><ReportMetric icon={<ShieldCheck className="h-4 w-4" />} label="Zone compliance" value={metrics.compliance} tone="text-[#e6b542]" /><ReportMetric icon={<Wrench className="h-4 w-4" />} label="Maintenance cost" value={metrics.maintenance} tone="text-[#b486e8]" /></div>
-    <ReportContent reportType={reportType} hubs={hubs} vehicles={vehicles} />
+    <ReportContent reportType={reportType} hubs={filteredHubs} vehicles={filteredVehicles} />
   </div>;
 }
 

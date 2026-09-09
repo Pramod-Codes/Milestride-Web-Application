@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Overview from "./pages/Overview";
+import Analytics from "./pages/Analytics";
 import Workspace, { type WorkspaceKey } from "./pages/Workspace";
 import NotFound from "./pages/NotFound";
 
@@ -22,6 +23,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/overview" element={<Overview />} />
+          <Route path="/analytics" element={<Analytics />} />
           {(["fleet", "vehicles", "hubs", "alerts", "geofencing", "charging", "maintenance", "reports"] as WorkspaceKey[]).map((kind) => (
             <Route key={kind} path={`/${kind}`} element={<Workspace kind={kind} />} />
           ))}

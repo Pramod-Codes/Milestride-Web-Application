@@ -47,6 +47,7 @@ export const vehicles: Vehicle[] = [
 
 export const navItems = [
   { label: "Overview", path: "/overview" },
+  { label: "Analytics", path: "/analytics" },
   { label: "Fleet", path: "/fleet" },
   { label: "Vehicles", path: "/vehicles" },
   { label: "Hubs", path: "/hubs" },

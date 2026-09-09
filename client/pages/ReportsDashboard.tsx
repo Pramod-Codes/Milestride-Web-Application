@@ -1,6 +1,6 @@
 import { useMemo, useState, type ReactNode } from "react";
 import { Check, ChevronDown, Download, FileText, Gauge, ShieldCheck, Wrench } from "lucide-react";
-import { fleetOptions, allHubs, allVehicles } from "@/lib/milestride";
+import { fleetOptions, allHubs, allVehicles, type Vehicle } from "@/lib/milestride";
 import { useMilestrideFleet } from "@/components/MilestrideShell";
 
 const reportTypes = ["Fleet performance", "Hub performance", "Charging and battery", "Maintenance costs"];
@@ -20,8 +20,18 @@ export default function ReportsDashboard({ query = "" }: { query?: string }) {
   const fleet = fleetOptions.find((item) => item.id === fleetId) ?? fleetOptions[0];
   const hubs = allHubs.filter((hub) => fleet.hubNames.includes(hub.name));
   const vehicles = allVehicles.filter((vehicle) => fleet.hubNames.includes(vehicle.hub));
+  const fleetSize = fleetId === "bellandur" ? 66 : 42;
+  const reportVehicles = useMemo(() => {
+    const additionalVehicles: Vehicle[] = Array.from({ length: Math.max(0, fleetSize - vehicles.length) }, (_, index) => {
+      const type: Vehicle["type"] = index % 3 === 0 ? "Scooter" : "E-bike";
+      const number = index + 5;
+      const status: Vehicle["status"] = index % 11 === 0 ? "Offline" : index % 7 === 0 ? "Low battery" : index % 5 === 0 ? "Charging" : index % 2 === 0 ? "Moving" : "Stationed";
+      return { id: `${type} ${fleetId === "bellandur" ? "B" : "V"}${number}`, type, hub: fleet.hubNames[index % fleet.hubNames.length], battery: Math.max(18, 94 - (index * 7) % 68), status, trips: 34 + (index * 23) % 188, distance: `${96 + (index * 31) % 360}.4 km`, lastActivity: index % 4 === 0 ? "Now" : `${index + 2}m ago`, x: 20 + (index * 13) % 65, y: 22 + (index * 17) % 62 };
+    });
+    return [...vehicles, ...additionalVehicles];
+  }, [fleet, fleetId, fleetSize, vehicles]);
   const normalizedQuery = query.trim().toLowerCase();
-  const filteredVehicles = vehicles.filter((vehicle) => !normalizedQuery || `${vehicle.id} ${vehicle.hub} ${vehicle.type}`.toLowerCase().includes(normalizedQuery));
+  const filteredVehicles = reportVehicles.filter((vehicle) => !normalizedQuery || `${vehicle.id} ${vehicle.hub} ${vehicle.type}`.toLowerCase().includes(normalizedQuery));
   const filteredHubs = hubs.filter((hub) => !normalizedQuery || `${hub.id} ${hub.name}`.toLowerCase().includes(normalizedQuery));
   const metrics = useMemo(() => ({
     utilization: fleetId === "bellandur" ? "74%" : "68%",

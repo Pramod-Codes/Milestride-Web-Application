@@ -1,5 +1,11 @@
 export type HubState = "healthy" | "warning" | "critical";
 export type VehicleState = "Moving" | "Stationed" | "Charging" | "Low battery" | "Maintenance" | "Offline";
+export type FleetId = "electronics-city" | "bellandur";
+
+export const fleetOptions: { id: FleetId; name: string; city: string; hubNames: string[] }[] = [
+  { id: "electronics-city", name: "Electronics City", city: "Bengaluru", hubNames: ["Global Tech Park", "University Campus", "Shopping Complex", "Metro Station"] },
+  { id: "bellandur", name: "Bellandur", city: "Bengaluru", hubNames: ["RMZ Ecospace", "Embassy TechVillage", "Prestige Tech Park", "Bellandur Lake Gate", "Outer Ring Road"] },
+];
 
 export type Hub = {
   id: string;
@@ -44,6 +50,26 @@ export const vehicles: Vehicle[] = [
   { id: "Scooter V3", type: "Scooter", hub: "University Campus", battery: 91, status: "Stationed", trips: 87, distance: "173.9 km", lastActivity: "12m ago", x: 31, y: 36 },
   { id: "Scooter V4", type: "Scooter", hub: "Shopping Complex", battery: 9, status: "Offline", trips: 42, distance: "88.2 km", lastActivity: "1h ago", x: 21, y: 57 },
 ];
+
+export const bellandurHubs: Hub[] = [
+  { id: "B-01", name: "RMZ Ecospace", available: 18, capacity: 32, utilization: 78, trips: 412, battery: 83, x: 30, y: 28, state: "healthy" },
+  { id: "B-02", name: "Embassy TechVillage", available: 16, capacity: 30, utilization: 73, trips: 368, battery: 79, x: 62, y: 25, state: "healthy" },
+  { id: "B-03", name: "Prestige Tech Park", available: 14, capacity: 28, utilization: 81, trips: 451, battery: 72, x: 74, y: 54, state: "warning" },
+  { id: "B-04", name: "Bellandur Lake Gate", available: 8, capacity: 16, utilization: 56, trips: 184, battery: 88, x: 34, y: 66, state: "healthy" },
+  { id: "B-05", name: "Outer Ring Road", available: 10, capacity: 20, utilization: 69, trips: 297, battery: 67, x: 76, y: 78, state: "warning" },
+];
+
+export const bellandurVehicles: Vehicle[] = [
+  { id: "E-Bike B11", type: "E-bike", hub: "RMZ Ecospace", battery: 86, status: "Moving", trips: 142, distance: "302.4 km", lastActivity: "Now", x: 32, y: 31 },
+  { id: "E-Bike B12", type: "E-bike", hub: "Embassy TechVillage", battery: 74, status: "Stationed", trips: 116, distance: "244.2 km", lastActivity: "6m ago", x: 64, y: 28 },
+  { id: "E-Bike B13", type: "E-bike", hub: "Prestige Tech Park", battery: 28, status: "Low battery", trips: 188, distance: "390.5 km", lastActivity: "5m ago", x: 72, y: 58 },
+  { id: "E-Bike B14", type: "E-bike", hub: "Bellandur Lake Gate", battery: 66, status: "Charging", trips: 74, distance: "160.3 km", lastActivity: "3m ago", x: 38, y: 69 },
+  { id: "Scooter B11", type: "Scooter", hub: "Outer Ring Road", battery: 59, status: "Moving", trips: 209, distance: "421.8 km", lastActivity: "Now", x: 73, y: 75 },
+  { id: "Scooter B12", type: "Scooter", hub: "RMZ Ecospace", battery: 91, status: "Stationed", trips: 102, distance: "214.7 km", lastActivity: "11m ago", x: 27, y: 24 },
+];
+
+export const allHubs = [...hubs, ...bellandurHubs];
+export const allVehicles = [...vehicles, ...bellandurVehicles];
 
 export const navItems = [
   { label: "Overview", path: "/overview" },

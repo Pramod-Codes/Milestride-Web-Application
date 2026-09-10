@@ -2,6 +2,19 @@ export type HubState = "healthy" | "warning" | "critical";
 export type VehicleState = "Moving" | "Stationed" | "Charging" | "Low battery" | "Maintenance" | "Offline";
 export type FleetId = "electronics-city" | "bellandur";
 
+export const formatIstTime = (date: Date = new Date(), includeSeconds = false) => {
+  const formatted = new Intl.DateTimeFormat("en-IN", {
+    timeZone: "Asia/Kolkata",
+    hour: "numeric",
+    minute: "2-digit",
+    ...(includeSeconds ? { second: "2-digit" as const } : {}),
+    hour12: true,
+  }).format(date);
+  return `${formatted.replace(/\b(am|pm)\b/i, (meridiem) => meridiem.toUpperCase())} IST`;
+};
+
+const minutesAgo = (minutes: number) => formatIstTime(new Date(Date.now() - minutes * 60_000));
+
 export const fleetOptions: { id: FleetId; name: string; city: string; hubNames: string[] }[] = [
   { id: "electronics-city", name: "Electronics City", city: "Bengaluru", hubNames: ["Global Tech Park", "University Campus", "Shopping Complex", "Metro Station"] },
   { id: "bellandur", name: "Bellandur", city: "Bengaluru", hubNames: ["RMZ Ecospace", "Embassy TechVillage", "Prestige Tech Park", "Bellandur Lake Gate", "Outer Ring Road"] },
@@ -41,14 +54,14 @@ export const hubs: Hub[] = [
 ];
 
 export const vehicles: Vehicle[] = [
-  { id: "E-Bike V1", type: "E-bike", hub: "Global Tech Park", battery: 82, status: "Moving", trips: 132, distance: "284.4 km", lastActivity: "Now", x: 73, y: 29 },
-  { id: "E-Bike V2", type: "E-bike", hub: "University Campus", battery: 64, status: "Stationed", trips: 91, distance: "190.2 km", lastActivity: "8m ago", x: 36, y: 42 },
-  { id: "E-Bike V3", type: "E-bike", hub: "Global Tech Park", battery: 18, status: "Low battery", trips: 201, distance: "451.1 km", lastActivity: "4m ago", x: 70, y: 24 },
-  { id: "E-Bike V4", type: "E-bike", hub: "Shopping Complex", battery: 22, status: "Maintenance", trips: 54, distance: "118.7 km", lastActivity: "24m ago", x: 26, y: 63 },
-  { id: "Scooter V1", type: "Scooter", hub: "Metro Station", battery: 71, status: "Moving", trips: 168, distance: "322.8 km", lastActivity: "Now", x: 59, y: 69 },
-  { id: "Scooter V2", type: "Scooter", hub: "Metro Station", battery: 18, status: "Charging", trips: 110, distance: "206.4 km", lastActivity: "2m ago", x: 69, y: 79 },
-  { id: "Scooter V3", type: "Scooter", hub: "University Campus", battery: 91, status: "Stationed", trips: 87, distance: "173.9 km", lastActivity: "12m ago", x: 31, y: 36 },
-  { id: "Scooter V4", type: "Scooter", hub: "Shopping Complex", battery: 9, status: "Offline", trips: 42, distance: "88.2 km", lastActivity: "1h ago", x: 21, y: 57 },
+  { id: "E-Bike V1", type: "E-bike", hub: "Global Tech Park", battery: 82, status: "Moving", trips: 132, distance: "284.4 km", lastActivity: minutesAgo(0), x: 73, y: 29 },
+  { id: "E-Bike V2", type: "E-bike", hub: "University Campus", battery: 64, status: "Stationed", trips: 91, distance: "190.2 km", lastActivity: minutesAgo(8), x: 36, y: 42 },
+  { id: "E-Bike V3", type: "E-bike", hub: "Global Tech Park", battery: 18, status: "Low battery", trips: 201, distance: "451.1 km", lastActivity: minutesAgo(4), x: 70, y: 24 },
+  { id: "E-Bike V4", type: "E-bike", hub: "Shopping Complex", battery: 22, status: "Maintenance", trips: 54, distance: "118.7 km", lastActivity: minutesAgo(24), x: 26, y: 63 },
+  { id: "Scooter V1", type: "Scooter", hub: "Metro Station", battery: 71, status: "Moving", trips: 168, distance: "322.8 km", lastActivity: minutesAgo(0), x: 59, y: 69 },
+  { id: "Scooter V2", type: "Scooter", hub: "Metro Station", battery: 18, status: "Charging", trips: 110, distance: "206.4 km", lastActivity: minutesAgo(2), x: 69, y: 79 },
+  { id: "Scooter V3", type: "Scooter", hub: "University Campus", battery: 91, status: "Stationed", trips: 87, distance: "173.9 km", lastActivity: minutesAgo(12), x: 31, y: 36 },
+  { id: "Scooter V4", type: "Scooter", hub: "Shopping Complex", battery: 9, status: "Offline", trips: 42, distance: "88.2 km", lastActivity: minutesAgo(60), x: 21, y: 57 },
 ];
 
 export const bellandurHubs: Hub[] = [
@@ -60,12 +73,12 @@ export const bellandurHubs: Hub[] = [
 ];
 
 export const bellandurVehicles: Vehicle[] = [
-  { id: "E-Bike B11", type: "E-bike", hub: "RMZ Ecospace", battery: 86, status: "Moving", trips: 142, distance: "302.4 km", lastActivity: "Now", x: 32, y: 31 },
-  { id: "E-Bike B12", type: "E-bike", hub: "Embassy TechVillage", battery: 74, status: "Stationed", trips: 116, distance: "244.2 km", lastActivity: "6m ago", x: 64, y: 28 },
-  { id: "E-Bike B13", type: "E-bike", hub: "Prestige Tech Park", battery: 28, status: "Low battery", trips: 188, distance: "390.5 km", lastActivity: "5m ago", x: 72, y: 58 },
-  { id: "E-Bike B14", type: "E-bike", hub: "Bellandur Lake Gate", battery: 66, status: "Charging", trips: 74, distance: "160.3 km", lastActivity: "3m ago", x: 38, y: 69 },
-  { id: "Scooter B11", type: "Scooter", hub: "Outer Ring Road", battery: 59, status: "Moving", trips: 209, distance: "421.8 km", lastActivity: "Now", x: 73, y: 75 },
-  { id: "Scooter B12", type: "Scooter", hub: "RMZ Ecospace", battery: 91, status: "Stationed", trips: 102, distance: "214.7 km", lastActivity: "11m ago", x: 27, y: 24 },
+  { id: "E-Bike B11", type: "E-bike", hub: "RMZ Ecospace", battery: 86, status: "Moving", trips: 142, distance: "302.4 km", lastActivity: minutesAgo(0), x: 32, y: 31 },
+  { id: "E-Bike B12", type: "E-bike", hub: "Embassy TechVillage", battery: 74, status: "Stationed", trips: 116, distance: "244.2 km", lastActivity: minutesAgo(6), x: 64, y: 28 },
+  { id: "E-Bike B13", type: "E-bike", hub: "Prestige Tech Park", battery: 28, status: "Low battery", trips: 188, distance: "390.5 km", lastActivity: minutesAgo(5), x: 72, y: 58 },
+  { id: "E-Bike B14", type: "E-bike", hub: "Bellandur Lake Gate", battery: 66, status: "Charging", trips: 74, distance: "160.3 km", lastActivity: minutesAgo(3), x: 38, y: 69 },
+  { id: "Scooter B11", type: "Scooter", hub: "Outer Ring Road", battery: 59, status: "Moving", trips: 209, distance: "421.8 km", lastActivity: minutesAgo(0), x: 73, y: 75 },
+  { id: "Scooter B12", type: "Scooter", hub: "RMZ Ecospace", battery: 91, status: "Stationed", trips: 102, distance: "214.7 km", lastActivity: minutesAgo(11), x: 27, y: 24 },
 ];
 
 export const allHubs = [...hubs, ...bellandurHubs];
@@ -85,7 +98,7 @@ export const navItems = [
 ];
 
 export const alerts = [
-  { title: "Low battery", detail: "E-Bike V3 has low battery (18%)", severity: "High", time: "4m ago" },
-  { title: "Battery charging", detail: "Scooter V2 charging interrupted", severity: "Medium", time: "10m ago" },
-  { title: "Offline", detail: "Scooter V4 reported a battery failure", severity: "Critical", time: "15m ago" },
+  { title: "Low battery", detail: "E-Bike V3 has low battery (18%)", severity: "High", time: minutesAgo(4) },
+  { title: "Battery charging", detail: "Scooter V2 charging interrupted", severity: "Medium", time: minutesAgo(10) },
+  { title: "Offline", detail: "Scooter V4 reported a battery failure", severity: "Critical", time: minutesAgo(15) },
 ];

@@ -10,7 +10,7 @@ export const formatIstTime = (date: Date = new Date(), includeSeconds = false) =
     ...(includeSeconds ? { second: "2-digit" as const } : {}),
     hour12: true,
   }).format(date);
-  return `${formatted.replace(/\b(am|pm)\b/i, (meridiem) => meridiem.toUpperCase())} IST`;
+  return formatted.replace(/\b(am|pm)\b/i, (meridiem) => meridiem.toUpperCase());
 };
 
 const minutesAgo = (minutes: number) => formatIstTime(new Date(Date.now() - minutes * 60_000));

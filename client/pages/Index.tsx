@@ -14,7 +14,7 @@ import {
 export default function Index() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("alex.morgan@milestride.io");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("MilestrideDemo2026");
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(true);
   const [error, setError] = useState("");

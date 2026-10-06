@@ -199,7 +199,7 @@
   .ms-shell > .flex { height: calc(100dvh - 4rem); min-height: 0; }
   .ms-shell main { min-height: 0; overflow: auto; }
   .ms-sidebar { width: 220px; flex-shrink: 0; border-right: 1px solid var(--ms-border); background: var(--ms-surface); padding: 1rem; transition: width .2s ease, transform .2s ease; }
-  .ms-sidebar.collapsed { width: 68px; }
+  .ms-sidebar.collapsed { width: 68px; padding-left: 0.5rem; padding-right: 0.5rem; }
   .ms-sidebar.collapsed .ms-nav-item { justify-content: center; padding-left: .5rem; padding-right: .5rem; }
   .ms-nav-item { display: flex; width: 100%; align-items: center; gap: .75rem; border-radius: .4rem; padding: .65rem .75rem; color: var(--ms-muted); font-size: .75rem; font-weight: 500; transition: background .2s, color .2s; }
   .ms-nav-item:hover, .ms-nav-item.active { background: var(--ms-accent-soft); color: var(--ms-accent); }
@@ -212,7 +212,7 @@
   @media (max-width: 1023px) {
     .ms-sidebar { position: fixed; top: 4rem; bottom: 0; left: 0; z-index: 46; display: block; width: min(18rem, calc(100vw - 3rem)); transform: translateX(-105%); box-shadow: 18px 0 40px rgba(0,0,0,.2); }
     .ms-sidebar.mobile-open { transform: translateX(0); }
-    .ms-sidebar.collapsed { width: min(18rem, calc(100vw - 3rem)); }
+    .ms-sidebar.collapsed { width: min(18rem, calc(100vw - 3rem)); padding-left: 1rem; padding-right: 1rem; }
     .ms-sidebar.collapsed .ms-nav-item { justify-content: flex-start; padding-left: .75rem; padding-right: .75rem; }
     .ms-sidebar.collapsed .sr-only { position: static; width: auto; height: auto; padding: 0; margin: 0; overflow: visible; clip: auto; white-space: normal; }
     .ms-sidebar.collapsed .mt-8 { display: block; }
